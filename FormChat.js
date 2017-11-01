@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import _once from 'lodash/once';
 // import cf from 'conversational-form';
 import './styles/_form-chat.scss';
-import { BT_ICON, USER_ICON } from './assets/icons';
 
 const RESERVED_IDS = ['chat', 'chatForm'];
 const RESERVED_ERROR = `Can't instantiate a new FormChat with a question/question ID equalling (${RESERVED_IDS.join(', ')}).`;
@@ -137,8 +136,6 @@ export default class FormChat extends Component {
 
     this.setState({ chat: window.cf.ConversationalForm.startTheConversation({
       formEl: chatFormRef,
-      robotImage: BT_ICON,
-      userImage: USER_ICON,
       userInterfaceOptions: {
         robot: {
           robotResponseTime: robotResponseTime || 250,
