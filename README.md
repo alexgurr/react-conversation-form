@@ -2,7 +2,7 @@
 
 A React wrapper for Conversational Form (https://github.com/space10-community/conversational-form).
 
-Currently this requires you to import the minified JS Script inside your index.html file. This is only temporary while we wait for the latest version on NPM.
+Currently this requires you to import the conversational-form minified JS Script inside your index.html file (https://cf-4053.kxcdn.com/conversational-form/0.9.6/conversational-form.min.js). This is only temporary while we wait for the latest version on NPM.
 
 Styles are in SASS so will need compiling to CSS.
 
