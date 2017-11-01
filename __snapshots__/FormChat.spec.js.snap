@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`common/components/FormChat should be able to render the form chat as per the snapshot 1`] = `
+<FormChat
+  chatOptions={Object {}}
+  onStepCallback={[Function]}
+  onSubmit={[Function]}
+  questions={
+    Array [
+      Object {
+        "componentType": "input",
+        "id": "foo",
+        "question": "Foo?",
+      },
+      Object {
+        "componentType": "select",
+        "id": "bar",
+        "question": "Bar?",
+        "selectOptions": Array [
+          Object {
+            "label": "foo",
+            "value": "foo",
+          },
+        ],
+      },
+    ]
+  }
+>
+  <div
+    className="form-chat"
+  >
+    <div
+      id="cf-context"
+    >
+      <form
+        className="form"
+        id="form"
+      >
+        <input
+          id="foo"
+        />
+        <select
+          id="bar"
+        >
+          <option
+            value="foo"
+          >
+            foo
+          </option>
+        </select>
+      </form>
+    </div>
+  </div>
+</FormChat>
+`;
