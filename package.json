@@ -1,0 +1,27 @@
+{
+  "name": "react-conversation-form",
+  "version": "0.0.1",
+  "description": "A React wrapper for Space10's Conversational Form",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexgurr/react-conversation-form.git"
+  },
+  "keywords": [
+    "react",
+    "conversational-form",
+    "conversation-form",
+    "conversational",
+    "form"
+  ],
+  "author": "conversation",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexgurr/react-conversation-form/issues"
+  },
+  "homepage": "https://github.com/alexgurr/react-conversation-form#readme",
+  "dependencies": {}
+}
