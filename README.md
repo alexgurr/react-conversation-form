@@ -64,7 +64,5 @@ For Example (Feedback Form):
 ## ToDo:
 
 - Expose icons and all configuration options through props (only subset currently supported)
-- Turn this into an NPM module (not yet initialised with package json)
 - Add build step for compiling to ES5 and for compiling SCSS to CSS
-- Add this to the NPM repo
-- Use the Conversational Form NPM module 
+- Use the Conversational Form NPM module
