@@ -1,4 +1,4 @@
-# react-conversational-form
+# react-conversational-form &middot; [![](https://img.shields.io/badge/status-is%20developing-green.svg?style=flat)](#plugin)
 
 A React wrapper for Conversational Form (https://github.com/space10-community/conversational-form).
 
@@ -6,7 +6,14 @@ Currently this requires you to import the minified JS Script inside your index.h
 
 Styles are in SASS so will need compiling to CSS.
 
-Example (Feedback Form):
+## Table of Contents
+
+- [Usage](#usage)
+- [ToDo](#todo)
+
+## Usage
+
+For Example (Feedback Form):
 
     <FormChat
       onSubmit={() => {}}
@@ -45,7 +52,7 @@ Example (Feedback Form):
   );
 
 
-Todo:
+## ToDo:
 
 - Expose icons and all configuration options through props (only subset currently supported)
 - Turn this into an NPM module (not yet initialised with package json)
