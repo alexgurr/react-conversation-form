@@ -8,8 +8,17 @@ Styles are in SASS so will need compiling to CSS.
 
 ## Table of Contents
 
+- [Installation](#installation)
 - [Usage](#usage)
 - [ToDo](#todo)
+
+## Installation
+
+`npm install react-conversation-form`
+
+or 
+
+`yarn add react-conversation-form`
 
 ## Usage
 
