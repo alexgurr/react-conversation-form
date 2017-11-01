@@ -1,4 +1,4 @@
-# react-conversational-form &middot; [![](https://img.shields.io/badge/status-is%20developing-green.svg?style=flat)](#plugin)
+# react-conversation-form &middot; [![](https://img.shields.io/badge/status-is%20developing-green.svg?style=flat)](#plugin)
 
 A React wrapper for Conversational Form (https://github.com/space10-community/conversational-form).
 
