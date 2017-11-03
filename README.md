@@ -27,7 +27,7 @@ For Example (Feedback Form):
     <FormChat
       onSubmit={() => {}}
       chatOptions={{
-        thankTheUser: ['email', 'feedback'],
+        thankTheUser: ['identifier', 'feedback'],
         introText: 'Hi there. Lets leave some feedback! To edit any of your responses, just click on them.',
         submitText: 'Thanks for giving us your feedback!'
       }}
