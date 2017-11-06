@@ -2,6 +2,8 @@
 
 A React wrapper for Conversational Form (https://github.com/space10-community/conversational-form).
 
+NPM module found here (https://www.npmjs.com/package/react-conversation-form).
+
 ## Table of Contents
 
 - [Installation](#installation)
