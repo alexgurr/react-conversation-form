@@ -1,13 +1,14 @@
 {
   "name": "react-conversation-form",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A React wrapper for Space10's Conversational Form",
   "main": "index.js",
   "scripts": {
     "build": "babel src -d dist",
     "test": "jest --config .jestrc.js",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
