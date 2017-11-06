@@ -1,6 +1,6 @@
 {
   "name": "react-conversation-form",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A React wrapper for Space10's Conversational Form",
   "main": "index.js",
   "scripts": {
@@ -29,10 +29,14 @@
   "homepage": "https://github.com/alexgurr/react-conversation-form#readme",
   "dependencies": {
     "conversational-form": "0.9.6",
+    "lodash": "^4.17.4",
     "prop-types": "^15.6.0",
     "react": "^16.0.0"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^3.2.14",
+    "@storybook/addon-links": "^3.2.14",
+    "@storybook/react": "^3.2.14",
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
@@ -41,9 +45,6 @@
     "enzyme": "^3.1.1",
     "jest": "^21.2.1",
     "jest-enzyme": "^4.0.1",
-    "react-dom": "^16.0.0",
-    "@storybook/react": "^3.2.14",
-    "@storybook/addon-actions": "^3.2.14",
-    "@storybook/addon-links": "^3.2.14"
+    "react-dom": "^16.0.0"
   }
 }
