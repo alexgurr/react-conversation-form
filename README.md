@@ -1,10 +1,6 @@
-# react-conversation-form &middot; [![](https://img.shields.io/badge/status-is%20developing-green.svg?style=flat)](#plugin)
+# react-conversation-form &middot; [![npm](https://img.shields.io/npm/dw/react-conversation-form.svg?style=flat-square)]()
 
 A React wrapper for Conversational Form (https://github.com/space10-community/conversational-form).
-
-Currently this requires you to import the conversational-form minified JS Script inside your index.html file (https://cf-4053.kxcdn.com/conversational-form/0.9.6/conversational-form.min.js). This is only temporary while we wait for the latest version on NPM.
-
-Styles are in SASS so will need compiling to CSS.
 
 ## Table of Contents
 
@@ -64,5 +60,4 @@ For Example (Feedback Form):
 ## ToDo:
 
 - Expose icons and all configuration options through props (only subset currently supported)
-- Add build step for compiling to ES5 and for compiling SCSS to CSS
-- Use the Conversational Form NPM module
+- Fix tests
