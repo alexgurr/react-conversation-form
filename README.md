@@ -6,6 +6,7 @@ A React wrapper for Conversational Form (https://github.com/space10-community/co
 
 - [Installation](#installation)
 - [Usage](#usage)
+- [Options](#options)
 - [ToDo](#todo)
 
 ## Installation
@@ -55,6 +56,34 @@ For Example (Feedback Form):
       ]}
     />
   );
+  
+## Options
+
+* `onSubmit` - *function* Callback function for the form contents when the user has finished (**required**)
+* `onStepCallback` - *function ({ id, text, success: successFunc, error: errorFunc })* Callback function for the form contents when the user has finished (**required**)
+* `questions` - *array* Array of *object* questions (**required**)
+    * `id` - *string* The unique question id (**required**)
+    * `componentType` - *string* Either 'input' or 'select' (**required**)
+    * `type` - *string* Type of component, eg. 'text', 'password'
+    * `question` - *string* The actual question (**required**)
+    * `selectOptions` - *array* Array of *object* select options. Only needed if the question is the select type
+        * `value` - *string*
+        * `label` - *string*
+* `chatOptions` - *object* Extra options for the chat
+    * `robotResponseTime` - *number* The time (ms) the robot takes before responding
+    * `robotChainResponseTime` - *number* The time (ms) the robot takes between chained messages
+    * `showUserThinking` - *boolean* Whether to show the user writing '...' while waiting for response
+    * `robotChainResponseTime` - *number* The time (ms) the robot takes between chained messages
+    * `thankTheUser` - *array* Array of question IDs that the bot should thank the user after answering
+    * `introText` - *string* The opening message from the bot
+    * `submittedResponseText` - *string* Closing response message from the bot
+
+
+
+
+
+
+
 
 
 ## ToDo:
