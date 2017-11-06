@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _once from 'lodash/once';
-// import cf from 'conversational-form';
-import './styles/_form-chat.scss';
+import cf from 'conversational-form';
 
 const RESERVED_IDS = ['chat', 'chatForm'];
 const RESERVED_ERROR = `Can't instantiate a new FormChat with a question/question ID equalling (${RESERVED_IDS.join(', ')}).`;
@@ -75,7 +74,7 @@ export default class FormChat extends Component {
     const { questions, onSubmit, chatOptions: { submittedResponseText } } = this.props;
 
     if (submittedResponseText) {
-      window.ConversationalForm.addRobotChatResponse(submittedResponseText);
+      cf.addRobotChatResponse(submittedResponseText);
     }
 
     const formValues = questions.reduce((submitValues, question) => ({
@@ -134,7 +133,7 @@ export default class FormChat extends Component {
       this.state[getRefKey(question.id)].setAttribute('cf-questions', questionText);
     });
 
-    this.setState({ chat: window.cf.ConversationalForm.startTheConversation({
+    this.setState({ chat: cf.startTheConversation({
       formEl: chatFormRef,
       userInterfaceOptions: {
         robot: {
@@ -159,6 +158,7 @@ export default class FormChat extends Component {
    * Get the appropriate element for each form question in props
    *
    * @param {Object} question
+   *
    * @return {JSX}
    */
   renderFormComponent(question) {
@@ -166,12 +166,22 @@ export default class FormChat extends Component {
 
     if (question.componentType === INPUT_TYPE) {
       return (
-        <input key={question.id} id={question.id} type={question.type} ref={this.setRef(ref)} />
+        <input
+            key={question.id}
+            id={question.id}
+            type={question.type}
+            ref={this.setRef(ref)}
+        />
       );
     }
 
     return (
-      <select key={question.id} ref={this.setRef(ref)} type={question.type} id={question.id}>
+      <select
+          key={question.id}
+          ref={this.setRef(ref)}
+          type={question.type}
+          id={question.id}
+      >
         {question.selectOptions && question.selectOptions.map(selectOption => (
           <option
             key={selectOption.value}
@@ -188,8 +198,8 @@ export default class FormChat extends Component {
     const { questions } = this.props;
 
     return (
-      <div className="form-chat">
-        <div id="cf-context" >
+      <div className="form-chat" style={{ height: '100%' }}>
+        <div id="cf-context" style={{ height: '100%' }}>
           <form id="form" className="form" ref={this.setRef('chatFormRef')}>
             {questions.map(this.renderFormComponent)}
           </form>

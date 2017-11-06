@@ -1,0 +1,16 @@
+{
+  "presets": [
+    ["env", {
+      "targets": {
+        "browsers": ["> 1%", "last 2 versions", "ie 11", "Firefox ESR"],
+        "node": "6"
+      },
+      "useBuiltIns": true
+    }],
+    "react"
+  ],
+  "plugins": [
+    "transform-runtime", // Improves bundle size when using lots of es2015+ transformations,
+    "transform-object-rest-spread"
+  ]
+}

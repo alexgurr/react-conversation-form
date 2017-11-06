@@ -4,7 +4,10 @@
   "description": "A React wrapper for Space10's Conversational Form",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel src -d dist",
+    "test": "jest --config .jestrc.js",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -23,5 +26,23 @@
     "url": "https://github.com/alexgurr/react-conversation-form/issues"
   },
   "homepage": "https://github.com/alexgurr/react-conversation-form#readme",
-  "dependencies": {}
+  "dependencies": {
+    "conversational-form": "0.9.6",
+    "prop-types": "^15.6.0",
+    "react": "^16.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "enzyme": "^3.1.1",
+    "jest": "^21.2.1",
+    "jest-enzyme": "^4.0.1",
+    "react-dom": "^16.0.0",
+    "@storybook/react": "^3.2.14",
+    "@storybook/addon-actions": "^3.2.14",
+    "@storybook/addon-links": "^3.2.14"
+  }
 }

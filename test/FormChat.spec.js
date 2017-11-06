@@ -1,6 +1,7 @@
 import React from 'react';
+require('jest-enzyme');
 import { mount } from 'enzyme';
-import FormChat from './FormChat';
+import FormChat from '../src/FormChat';
 
 const MOCK_QUESTIONS = [
   { id: 'foo', componentType: 'input', question: 'Foo?' },
