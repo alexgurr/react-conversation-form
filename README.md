@@ -60,7 +60,7 @@ For Example (Feedback Form):
 ## Options
 
 * `onSubmit` - *function* Callback function for the form contents when the user has finished (**required**)
-* `onStepCallback` - *function ({ id, text, success: successFunc, error: errorFunc })* Callback function for the form contents when the user has finished (**required**)
+* `onStepCallback` - *function ({ id, text, success: successFunc, error: errorFunc })* Callback function for the form contents when the user has finished `default: ({ success }) => { success(); }` (**required**)
 * `questions` - *array* Array of *object* questions (**required**)
     * `id` - *string* The unique question id (**required**)
     * `componentType` - *string* Either 'input' or 'select' (**required**)
@@ -69,7 +69,7 @@ For Example (Feedback Form):
     * `selectOptions` - *array* Array of *object* select options. Only needed if the question is the select type
         * `value` - *string*
         * `label` - *string*
-* `chatOptions` - *object* Extra options for the chat
+* `chatOptions` - *object* Extra options for the chat `default: {}`
     * `robotResponseTime` - *number* The time (ms) the robot takes before responding
     * `robotChainResponseTime` - *number* The time (ms) the robot takes between chained messages
     * `showUserThinking` - *boolean* Whether to show the user writing '...' while waiting for response
