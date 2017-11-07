@@ -1,4 +1,4 @@
-# react-conversation-form &middot; [![npm](https://img.shields.io/npm/v/react-conversation-form.svg?style=flat-square)](https://www.npmjs.com/package/react-conversation-form)   [![npm](https://img.shields.io/npm/dw/react-conversation-form.svg?style=flat-square)]()
+# react-conversation-form &middot; [![npm](https://img.shields.io/npm/v/react-conversation-form.svg?style=flat-square)](https://www.npmjs.com/package/react-conversation-form)   [![npm](https://img.shields.io/npm/dt/react-conversation-form.svg?style=flat-square)]()
 
 A React wrapper for Conversational Form (https://github.com/space10-community/conversational-form).
 
