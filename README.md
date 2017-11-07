@@ -23,7 +23,7 @@ or
 For Example (Feedback Form):
 
      <Conversation
-          onSubmit={(a) => {console.log(a)}}
+          onSubmit={() => {}}
           chatOptions={{
               thankTheUser: ['identifier', 'feedback'],
               introText: 'Hi there. Lets leave some feedback! To edit any of your responses, just click on them.',
