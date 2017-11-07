@@ -31,6 +31,11 @@ function checkIfIdIsReserved(id, state) {
     }
 }
 
+/**
+ * Throws an error if the child isn't a Question or Select component
+ *
+ * @param {JSX} child
+ */
 function checkValidChild(child) {
     if (child.type !== Question && child.type !== Select) {
         throw new Error(`Conversation children must be either Questions or Selects. Found ${child.type}.`);
@@ -60,6 +65,15 @@ function allRefsSet(state) {
         .every(stateKey => !stateKey.includes(REF_SUFFIX) || Boolean(state[stateKey]));
 }
 
+/**
+ * Builds initial state from children form elements. Makes sure the IDs and element types are
+ * valid. Adds props to each form element and stores them in the state.
+ *
+ * @param {JSX} children
+ * @param {func} injectPropsFunc
+ *
+ * @return {Object}
+ */
 function getInitialisedState(children, injectPropsFunc) {
     return React.Children
         .toArray(children)
@@ -67,7 +81,7 @@ function getInitialisedState(children, injectPropsFunc) {
             checkValidChild(child);
             checkIfIdIsReserved(child.props.id, state);
 
-            const questionId = child.props.id || `question${index}`;
+            const questionId = child.props.id || `question${index + 1}`;
 
             return {
                 ...state,
@@ -76,6 +90,29 @@ function getInitialisedState(children, injectPropsFunc) {
                 formElements: [...state.formElements, injectPropsFunc(child, questionId)]
             };
         }, { chatFormRef: void 0, chat: void 0, formElements: [] });
+}
+
+/**
+ * Validates the result of a question
+ *
+ * @param {string} id
+ * @param {string} text
+ * @param {function|string} validation
+ *
+ * @return {bool}
+ */
+function isValidResult(id, text, validation) {
+    if (typeof validation === 'string') {
+        return new RegExp(validation).test(text);
+    }
+
+    if (typeof validation === 'function') {
+        return validation(text);
+    }
+
+    console.warn(`Ignoring validation for question [${id}] - type not recognised.`);
+
+    return true;
 }
 
 export default class FormChat extends Component {
@@ -90,19 +127,28 @@ export default class FormChat extends Component {
         this.state = getInitialisedState(props.children, this.injectPropsToChild);
     }
 
+    /**
+     * Add props to each form element child
+     *
+     * @param {JSX} child
+     * @param {string} id
+     *
+     * @return {JSX}
+     */
     injectPropsToChild(child, id) {
         return React.cloneElement(child, { id, ref: this.setRef(getRefKey(id)) });
     }
 
     onSubmit() {
-        const {questions, onSubmit, chatOptions: {submittedResponseText}} = this.props;
+        const { onSubmit, chatOptions: { submittedResponseText } } = this.props;
+        const { formElements } = this.state;
 
         if (submittedResponseText) {
             cf.addRobotChatResponse(submittedResponseText);
         }
 
-        const formValues = questions.reduce((submitValues, question) => ({
-            ...submitValues, [question.id]: this.state[question.id]
+        const formValues = formElements.reduce((submitValues, question) => ({
+            ...submitValues, [question.props.id]: this.state[question.props.id]
         }), {});
 
         onSubmit(formValues);
@@ -124,7 +170,7 @@ export default class FormChat extends Component {
 
         return (el) => {
             if (el && !this.state[elName]) {
-                this.setState({[elName]: el}, tryToStartConversation);
+                this.setState({ [elName]: el }, tryToStartConversation);
             }
         };
     }
@@ -137,7 +183,6 @@ export default class FormChat extends Component {
      */
     startConversation() {
         const {
-            onStepCallback,
             chatOptions: {
                 robotResponseTime,
                 robotChainResponseTime,
@@ -146,15 +191,16 @@ export default class FormChat extends Component {
                 introText
             }
         } = this.props;
+
         const { formElements, chatFormRef } = this.state;
 
         formElements.forEach((questionEl, index) => {
-            const { id, children } = questionEl.props;
+            const { id, children, question } = questionEl.props;
             const displayThanks = thankTheUser && thankTheUser.includes(id) ? 'Thanks.&&' : '';
             const questionPrefix = index === 0 && introText ? `${introText}&&` : displayThanks;
-            const questionText = `${questionPrefix}${children}`;
+            const questionText = `${questionPrefix}${question || children}`;
 
-            this.state[getRefKey(id)].setAttribute('cf-questions', questionText);
+            this.state[getRefKey(id)].state.el.setAttribute('cf-questions', questionText);
         });
 
         this.setState({
@@ -168,12 +214,15 @@ export default class FormChat extends Component {
                     user: {showThinking: showUserThinking || false}
                 },
                 context: document.getElementById('cf-context'),
-                flowStepCallback: ({tag: {id}, text}, success, error) => {
+                flowStepCallback: ({ tag: { id }, text }, success, error) => {
                     // Set the result of the input in state
-                    this.setState({[id]: text});
+                    this.setState({ [id]: text });
 
-                    // Call the callback prop function
-                    onStepCallback({id, text, success, error});
+                    const { props: { validation } } = this.state[getRefKey(id)];
+
+                    if (!validation) { return success(); }
+
+                    return isValidResult(id, text, validation) ? success() : error();
                 },
                 submitCallback: this.onSubmit
             })
@@ -195,10 +244,8 @@ export default class FormChat extends Component {
     }
 }
 
-FormChat
-    .propTypes = {
+FormChat.propTypes = {
     onSubmit: PropTypes.func.isRequired,
-    onStepCallback: PropTypes.func,
     children: PropTypes.node,
     chatOptions: PropTypes.shape({
         robotResponseTime: PropTypes.number,
@@ -210,11 +257,7 @@ FormChat
     })
 };
 
-FormChat
-    .defaultProps = {
-    onStepCallback: ({success}) => {
-        success();
-    },
+FormChat.defaultProps = {
     chatOptions: {},
     children: void 0
 };

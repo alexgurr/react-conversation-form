@@ -21,54 +21,32 @@ or
 
 For Example (Feedback Form):
 
-    <FormChat
-      onSubmit={() => {}}
-      chatOptions={{
-        thankTheUser: ['identifier', 'feedback'],
-        introText: 'Hi there. Lets leave some feedback! To edit any of your responses, just click on them.',
-        submitText: 'Thanks for giving us your feedback!'
-      }}
-      questions={[
-        {
-          id: 'feedbackType',
-          componentType: 'select',
-          type: 'text',
-          question: 'What type of feedback are you thinking of?',
-          selectOptions: [
-            { label: 'Issue', value: 'issue' },
-            { label: 'Typo', value: 'typo' },
-            { label: 'Praise', value: 'praise' },
-            { label: 'Other', value: 'other' }
-          ]
-        },
-        {
-          id: 'identifier',
-          componentType: 'input',
-          type: 'text',
-          question: 'What\'s your company name/email address, so we can identify you?'
-        },
-        {
-          id: 'feedback',
-          componentType: 'input',
-          type: 'text',
-          question: 'What are you thinking?'
-        }
-      ]}
-    />
-  );
+     <Conversation
+              onSubmit={(a) => {console.log(a)}}
+              chatOptions={{
+                  thankTheUser: ['identifier', 'feedback'],
+                  introText: 'Hi there. Lets leave some feedback! To edit any of your responses, just click on them.',
+                  submitText: 'Thanks for giving us your feedback!'
+              }}
+          >
+              <Select id="feedbackType" question="What type of feedback are you thinking of?">
+                  <Option value="issue">Issue</Option>
+                  <Option value="typo">Typo</Option>
+                  <Option value="praise">Praise</Option>
+                  <Option value="other">Other</Option>
+              </Select>
+              <Question id="email" validation={text => text.includes('@')}>
+                  {'What\'s your company email address, so we can identify you?'}
+              </Question>
+              <Question id="feedback" validation={[]}>
+                  What are you thinking?
+              </Question>
+          </Conversation>
   
 ## Options
 
+### Conversation
 * `onSubmit` - *function* Callback function for the form contents when the user has finished (**required**)
-* `onStepCallback` - *function ({ id, text, success: successFunc, error: errorFunc })* Callback function for the form contents when the user has finished `default: ({ success }) => { success(); }` (**required**)
-* `questions` - *array* Array of *object* questions (**required**)
-    * `id` - *string* The unique question id (**required**)
-    * `componentType` - *string* Either 'input' or 'select' (**required**)
-    * `type` - *string* Type of component, eg. 'text', 'password'
-    * `question` - *string* The actual question (**required**)
-    * `selectOptions` - *array* Array of *object* select options. Only needed if the question is the select type
-        * `value` - *string*
-        * `label` - *string*
 * `chatOptions` - *object* Extra options for the chat `default: {}`
     * `robotResponseTime` - *number* The time (ms) the robot takes before responding
     * `robotChainResponseTime` - *number* The time (ms) the robot takes between chained messages
@@ -78,13 +56,11 @@ For Example (Feedback Form):
     * `introText` - *string* The opening message from the bot
     * `submittedResponseText` - *string* Closing response message from the bot
 
+### Question
 
+### Select
 
-
-
-
-
-
+### Option
 
 ## ToDo:
 
