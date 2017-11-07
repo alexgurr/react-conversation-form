@@ -39,7 +39,7 @@ For Example (Feedback Form):
           <Question id="email" validation={text => text.includes('@')}>
               {'What\'s your company email address, so we can identify you?'}
           </Question>
-          <Question id="feedback" validation={[]}>
+          <Question id="feedback" validation="^[a-zA-Z ]+$">
               What are you thinking?
           </Question>
       </Conversation>
