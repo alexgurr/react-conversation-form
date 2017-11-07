@@ -115,7 +115,7 @@ function isValidResult(id, text, validation) {
     return true;
 }
 
-export default class FormChat extends Component {
+export default class Conversation extends Component {
     constructor(props) {
         super(props);
 
@@ -244,7 +244,7 @@ export default class FormChat extends Component {
     }
 }
 
-FormChat.propTypes = {
+Conversation.propTypes = {
     onSubmit: PropTypes.func.isRequired,
     children: PropTypes.node,
     chatOptions: PropTypes.shape({
@@ -257,7 +257,7 @@ FormChat.propTypes = {
     })
 };
 
-FormChat.defaultProps = {
+Conversation.defaultProps = {
     chatOptions: {},
     children: void 0
 };
