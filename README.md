@@ -2,6 +2,7 @@
 
 A React wrapper for Conversational Form (https://github.com/space10-community/conversational-form).
 
+v2.X is not compatible with v1.X. You'll need to change your implementation. The key difference is the use of new components instead of the 'questions' prop.
 ## Table of Contents
 
 - [Installation](#installation)
@@ -22,26 +23,26 @@ or
 For Example (Feedback Form):
 
      <Conversation
-              onSubmit={(a) => {console.log(a)}}
-              chatOptions={{
-                  thankTheUser: ['identifier', 'feedback'],
-                  introText: 'Hi there. Lets leave some feedback! To edit any of your responses, just click on them.',
-                  submitText: 'Thanks for giving us your feedback!'
-              }}
-          >
-              <Select id="feedbackType" question="What type of feedback are you thinking of?">
-                  <Option value="issue">Issue</Option>
-                  <Option value="typo">Typo</Option>
-                  <Option value="praise">Praise</Option>
-                  <Option value="other">Other</Option>
-              </Select>
-              <Question id="email" validation={text => text.includes('@')}>
-                  {'What\'s your company email address, so we can identify you?'}
-              </Question>
-              <Question id="feedback" validation={[]}>
-                  What are you thinking?
-              </Question>
-          </Conversation>
+          onSubmit={(a) => {console.log(a)}}
+          chatOptions={{
+              thankTheUser: ['identifier', 'feedback'],
+              introText: 'Hi there. Lets leave some feedback! To edit any of your responses, just click on them.',
+              submitText: 'Thanks for giving us your feedback!'
+          }}
+      >
+          <Select id="feedbackType" question="What type of feedback are you thinking of?">
+              <Option value="issue">Issue</Option>
+              <Option value="typo">Typo</Option>
+              <Option value="praise">Praise</Option>
+              <Option value="other">Other</Option>
+          </Select>
+          <Question id="email" validation={text => text.includes('@')}>
+              {'What\'s your company email address, so we can identify you?'}
+          </Question>
+          <Question id="feedback" validation={[]}>
+              What are you thinking?
+          </Question>
+      </Conversation>
   
 ## Options
 
