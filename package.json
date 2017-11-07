@@ -1,6 +1,6 @@
 {
   "name": "react-conversation-form",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A React wrapper for Space10's Conversational Form",
   "main": "index.js",
   "scripts": {
