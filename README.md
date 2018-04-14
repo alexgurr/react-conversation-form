@@ -12,7 +12,7 @@ v2.X is not compatible with v1.X. You'll need to change your implementation. The
 
 ## Installation
 
-`npm install react-conversation-form`
+`npm install react-conversation-form --save`
 
 or 
 
