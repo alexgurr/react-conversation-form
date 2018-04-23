@@ -22,10 +22,13 @@ or
 
 For Example (Feedback Form):
 
+     import { Conversation, Select, Question, Option } from 'react-conversation-form';
+     // const { Conversation, Select, Question, Option } = require('react-conversation-form');
+     
      <Conversation
           onSubmit={() => {}}
           chatOptions={{
-              thankTheUser: ['identifier', 'feedback'],
+              thankTheUser: ['identifier', 'feedbackType'],
               introText: 'Hi there. Lets leave some feedback! To edit any of your responses, just click on them.',
               submitText: 'Thanks for giving us your feedback!'
           }}
