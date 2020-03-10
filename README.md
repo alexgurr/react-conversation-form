@@ -2,7 +2,6 @@
 
 A React wrapper for Conversational Form (https://github.com/space10-community/conversational-form).
 
-v2.X is not compatible with v1.X. You'll need to change your implementation. The key difference is the use of new components instead of the 'questions' prop.
 ## Table of Contents
 
 - [Installation](#installation)
